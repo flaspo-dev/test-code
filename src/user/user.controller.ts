@@ -8,8 +8,8 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Get()
-  getHello(): string {
-    return 'HelloWorld';
+  getHello(): Promise<User[]> {
+    return this.userService.findAll();
   }
 
   @Get('/bye')
@@ -21,5 +21,4 @@ export class UserController {
   new(): Promise<void> {
     return this.userService.new();
   }
-
 }
